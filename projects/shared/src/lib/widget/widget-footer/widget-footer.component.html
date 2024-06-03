@@ -1,0 +1,3 @@
+<div #ngContent [ngClass]="{ 'card-header': !!ngContent.textContent }">
+    <ng-content select="[slot]='content'"></ng-content>
+</div>

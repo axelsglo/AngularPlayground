@@ -23,9 +23,10 @@
       "dom"
     ],
     "paths": {
-      "Shared": [
-        "./dist/shared"
-      ]
+      "shared": [
+        "./projects/shared/src/public_api"
+      ],
+      "@shared/*": ["./projects/shared/src/*"]
     }
   },
   "angularCompilerOptions": {

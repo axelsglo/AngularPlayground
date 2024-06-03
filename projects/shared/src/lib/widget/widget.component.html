@@ -1,0 +1,20 @@
+<div class="card">
+  <div
+    #ngContentHeader
+    [ngClass]="{ 'card-header': !!ngContentHeader.textContent }"
+  >
+    <ng-content select="[slot]='header'"></ng-content>
+  </div>
+  <div #ngContentBody class="card-body">
+    <ng-content></ng-content>
+    @if (!ngContentBody.children.length) {
+    <p>No Body.</p>
+    }
+  </div>
+  <lib-widget-footer>
+    <ng-content
+      ngProjectAs="[slot]='content'"
+      select="[slot]='cardFooter'"
+    ></ng-content>
+  </lib-widget-footer>
+</div>

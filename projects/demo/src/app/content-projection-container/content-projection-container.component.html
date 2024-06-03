@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>Widget component using dynamic projected content.</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <lib-widget>
+        <ng-container ngProjectAs="[slot]='header'">
+          Projected Widget Title
+        </ng-container>
+        <div>Projected Widget Body.</div>
+        <ng-container ngProjectAs="[slot]='cardFooter'">
+          <a href="#" class="btn btn-primary">Projected Footer button</a>
+        </ng-container>
+      </lib-widget>
+    </div>
+    <div class="col">
+      <lib-widget>
+        <div>Projected Widget Body.</div>
+      </lib-widget>
+    </div>
+  </div>
+</div>
