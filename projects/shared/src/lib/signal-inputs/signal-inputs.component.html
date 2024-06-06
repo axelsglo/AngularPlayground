@@ -1,0 +1,15 @@
+<p>All users:</p>
+
+<ul>
+@for (user of users(); track $index) {
+    <li>{{user.fullName}}</li>
+}
+</ul>
+
+<p>Filtered users:</p>
+
+<ul>
+    @for (user of filteredUsers(); track $index) {
+        <li>{{user.fullName}}</li>
+    }
+</ul>
