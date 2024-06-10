@@ -10,6 +10,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WidgetFooterComponent implements OnInit{
   ngOnInit(): void {
-    console.log('footer init');
+    console.log('WidgetFooterComponent init');
   }
 }

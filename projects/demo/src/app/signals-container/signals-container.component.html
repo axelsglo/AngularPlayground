@@ -1,53 +1,56 @@
 <section class="container">
-    <h4>Signal Inputs</h4>
+  <h4 class="py-3">Signal Inputs</h4>
 
-    <p>
-      Angular's
-      <a href="https://angular.io/guide/signal-inputs" target="_blank"
-        >Signal Inputs</a
-      >
-      allow values to be bound from parent components. Those values are exposed
-      using a Signal and can change during the lifecycle of your component.
-    </p>
+  <p>
+    Angular's
+    <a href="https://angular.io/guide/signal-inputs" target="_blank">Signal Inputs</a>
+    allow values to be bound from parent components. Those values are exposed
+    using a Signal and can change during the lifecycle of your component.
+  </p>
 
-    <p>
-      In this example, the child component gets a User array and transforms it
-      by adding a new 'fullname' field.
-    </p>
-
-    <form [formGroup]="userForm" (ngSubmit)="addUser()">
-      <div class="input-group mb-3">
-        <input
-          formControlName="firstName"
-          type="text"
-          placeholder="First name"
-          class="form-control"
-        />
-        <input
-          formControlName="lastName"
-          type="text"
-          placeholder="Last name"
-          class="form-control"
-        />
-        <button class="btn btn-primary">Add user</button>
-      </div>
-    </form>
-
-    <div class="form-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        (input)="updateUserQuery($event)"
-        placeholder="Search users"
-      />
+  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+    <div class="input-group mb-3">
+      <input formControlName="firstName" type="text" placeholder="First name" class="form-control" />
+      <input formControlName="lastName" type="text" placeholder="Last name" class="form-control" />
+      <button class="btn btn-primary">Add user</button>
     </div>
+  </form>
 
-    <lib-signal-inputs
-      [users]="users()"
-      [query]="userQueryDebounced"
-    ></lib-signal-inputs>
+  <div class="form-group mb-3">
+    <input type="text" class="form-control" (input)="updateUserQuery($event)" placeholder="Search users" />
+  </div>
 
+  <p>List of users in parent component. Uses <code>Signal inputs</code>.</p>
+
+  <ul>
     @for (user of users(); track $index) {
-        {{user.firstName}} {{user.lastName}}
+    <li>{{user.firstName}} {{user.lastName}}</li>
     }
-  </section>
+  </ul>
+
+  <p>List of mutable users in parent component. This does not use <code>Signal Inputs</code> so when the array is
+    modified in the child component, the parent component gets updated too.</p>
+
+  <ul>
+    @for (user of usersArrayMutable; track $index) {
+    <li>{{user.firstName}} {{user.lastName}}</li>
+    }
+  </ul>
+
+  <p>
+    The child component <code>lib-signal-inputs</code> gets a User array and transforms it
+    by adding a new 'fullname' field. It also quets a query string to filter the users.
+  </p>
+
+  <div class="p-3 child-component-container mb-3">
+    <div class="container">
+      <lib-signal-inputs [users]="users()" [query]="userQueryDebounced" [usersMutable]="usersArrayMutable"></lib-signal-inputs>
+    </div>
+  </div>
+
+  <div class="p-3 child-component-container">
+    <div class="container">
+      <lib-signal-inputs [users]="usersArray" [query]="userQueryDebounced" [usersMutable]="usersArrayMutable"></lib-signal-inputs>
+    </div>
+  </div>
+</section>

@@ -15,12 +15,12 @@ import { SignalInputsComponent } from '@shared/lib/signal-inputs/signal-inputs.c
 })
 export class SignalsContainerComponent {
   flagComp = false;
-  
   userQuery = signal('');
   userQuery$ = toObservable(this.userQuery);
   userQueryDebounced = '';
-  
   users = signal<User[]>([{ firstName: 'Axel', lastName: 'Salmeron' }, { firstName: 'John', lastName: 'Doe' }]);
+  usersArray: User[] = [{ firstName: 'Axel', lastName: 'Salmeron' }, { firstName: 'John', lastName: 'Doe' }];
+  usersArrayMutable: User[] = [{ firstName: 'James', lastName: 'Hetfield' }, { firstName: 'Jack', lastName: 'Black' }];
   userForm = new FormGroup({
     firstName: new FormControl('', { nonNullable: true, validators: Validators.required }),
     lastName: new FormControl('', { nonNullable: true, validators: Validators.required }),
@@ -38,14 +38,6 @@ export class SignalsContainerComponent {
         this.userQueryDebounced = searchTerm;
         this.changeDetectorRef.detectChanges();
       });
-  }
-
-  flagCompChange() {
-    console.log('Flag change');
-  }
-
-  flagSignalCompChange() {
-    console.log('Flag Signal change');
   }
 
   addUser() {

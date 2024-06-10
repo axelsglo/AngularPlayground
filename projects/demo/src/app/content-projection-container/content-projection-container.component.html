@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4>Widget component using dynamic projected content.</h4>
+      <h4 class="py-3">Widget component using dynamic projected content.</h4>
     </div>
   </div>
 
@@ -9,9 +9,27 @@
     <div class="col">
       <lib-widget>
         <ng-container ngProjectAs="[slot]='header'">
-          Signal Input example
+          Projected title from parent component
         </ng-container>
-        <div>Projected Widget Body.</div>
+
+        <p>
+          The widget Title is using the
+          <code>ngProjectAs="[slot]='header'</code> attribute so it's child
+          component can select it using
+          <code>&lt;ng-content
+            select="[slot]='header'"&gt;&lt;/ng-content&gt;</code>.
+        </p>
+        <p>The use of <code>ngProjectAs</code> it's optional and <code>slot="header"</code> could be used instead, but
+          <code>ngProjectAs</code> makes multi layered projection possible, so the content can be re projected to a
+          grandchild component.
+        </p>
+        <p>Conent reprojection can be observed on the widget footer, which is projecting a button from the
+          container component into the <code>lib-widget</code> component and then once more from <code>lib-widget</code>
+          into the <code>lib-widget-footer</code> component.
+        </p>
+        <p>The widget body does not use any attribute and any content will be projected inside of
+          it by default.</p>
+
         <ng-container ngProjectAs="[slot]='cardFooter'">
           <a routerLink="/signalInputs" routerLinkActive="active" class="btn btn-primary">Go to signal input example</a>
         </ng-container>
@@ -19,7 +37,8 @@
     </div>
     <div class="col">
       <lib-widget>
-        <div>Projected Widget Body.</div>
+        <p>This widget does not have a header nor a footer.</p>
+        <p>This implementation has the disadvantage that the footer component <code>lib-widget-footer</code> it's stil being initialized.</p>
       </lib-widget>
     </div>
   </div>

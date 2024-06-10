@@ -1,15 +1,15 @@
-<p>All users:</p>
-
-<ul>
-@for (user of users(); track $index) {
-    <li>{{user.fullName}}</li>
-}
-</ul>
-
-<p>Filtered users:</p>
+<p>Filtered users using Input signals:</p>
 
 <ul>
     @for (user of filteredUsers(); track $index) {
-        <li>{{user.fullName}}</li>
+    <li>{{user.fullName}}</li>
+    }
+</ul>
+
+<p>Mutable users without Input signals:</p>
+
+<ul>
+    @for (user of usersMutable; track $index) {
+    <li>{{user.firstName}} {{ user.lastName }}</li> 
     }
 </ul>

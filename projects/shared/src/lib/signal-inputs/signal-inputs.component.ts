@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, computed, input } from '@angular/core';
 import { User, ComputedUser } from './users';
 
 @Component({
@@ -14,6 +14,8 @@ export class SignalInputsComponent implements OnInit {
     transform: this.getUserFullName
   });
 
+  @Input() usersMutable: User[] = [];
+
   public filteredUsers = computed(
     () => this.users()
       .filter(({ fullName: fullname }) => fullname.toLocaleLowerCase().startsWith(this.query()))
@@ -26,7 +28,8 @@ export class SignalInputsComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.users().push({ firstName: 'added', lastName: 'inside', fullName: 'added inside'});
+    this.users().push({ firstName: 'Added in', lastName: 'child component', fullName: 'Added in child component'});
+    this.usersMutable.push({ firstName: 'Added in', lastName: 'child component'});
   }
 
   getUserFullName(users: User[]): ComputedUser[] {

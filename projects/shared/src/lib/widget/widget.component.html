@@ -1,8 +1,5 @@
 <div class="card">
-  <div
-    #ngContentHeader
-    [ngClass]="{ 'card-header': !!ngContentHeader.textContent }"
-  >
+  <div #ngContentHeader [ngClass]="{ 'card-header': !!ngContentHeader.textContent }">
     <ng-content select="[slot]='header'"></ng-content>
   </div>
   <div #ngContentBody class="card-body">
@@ -11,10 +8,7 @@
     <p>No Body.</p>
     }
   </div>
-  <lib-widget-footer>
-    <ng-content
-      ngProjectAs="[slot]='content'"
-      select="[slot]='cardFooter'"
-    ></ng-content>
+  <lib-widget-footer #ngContentFooter>
+    <ng-content ngProjectAs="[slot]='content'" select="[slot]='cardFooter'"></ng-content>
   </lib-widget-footer>
 </div>
