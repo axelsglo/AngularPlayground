@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { User } from '@shared/lib/signal-inputs/users';
@@ -13,7 +13,7 @@ import { SignalInputsComponent } from '@shared/lib/signal-inputs/signal-inputs.c
   styleUrl: './signals-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignalsContainerComponent {
+export class SignalsContainerComponent implements OnInit {
   flagComp = false;
   userQuery = signal('');
   userQuery$ = toObservable(this.userQuery);
