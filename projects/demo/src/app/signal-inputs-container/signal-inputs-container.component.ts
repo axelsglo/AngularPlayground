@@ -6,14 +6,14 @@ import { debounceTime } from 'rxjs';
 import { SignalInputsComponent } from '@shared/lib/signal-inputs/signal-inputs.component';
 
 @Component({
-  selector: 'app-signals-container',
+  selector: 'app-signal-inputs-container',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, SignalInputsComponent],
-  templateUrl: './signals-container.component.html',
-  styleUrl: './signals-container.component.scss',
+  templateUrl: './signal-inputs-container.component.html',
+  styleUrl: './signal-inputs-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignalsContainerComponent implements OnInit {
+export class SignalInputsContainerComponent implements OnInit {
   flagComp = false;
   userQuery = signal('');
   userQuery$ = toObservable(this.userQuery);
