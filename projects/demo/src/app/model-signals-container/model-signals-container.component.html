@@ -1,0 +1,29 @@
+<section class="container">
+  <h4>ModelSignal</h4>
+  <p>
+    Angular's
+    <a href="https://angular.io/api/core/ModelSignal" target="_blank">ModelSignal</a>
+    for a simpler of 2 way data binding, also replacing
+    <strong>input</strong> and <strong>output</strong> properties to
+    communicate data from one component to another
+  </p>
+  <div class="mb-3">
+    <p> Flag value in parent component: {{flag}}</p>
+    <button (click)="flag = !flag" class="btn btn-primary">
+      Toggle flag from parent
+    </button>
+  </div>
+
+  <div class="p-3 child-component-container">
+    <div class="container">
+
+      <div class="mb-3">
+        <p>One way data binding.</p>
+        <lib-model-signal [flag]="flag" (flagChange)="flagChange()"></lib-model-signal>
+      </div>
+
+      <p>Two way data binding.</p>
+      <lib-model-signal [(flag)]="flag" (flagChange)="flagChange()"></lib-model-signal>
+    </div>
+  </div>
+</section>

@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { ContentProjectionContainerComponent } from './content-projection-container/content-projection-container.component';
-import { SignalsContainerComponent } from './signals-input-container/signals-input-container.component';
+import { SignalInputsContainerComponent } from './signal-inputs-container/signal-inputs-container.component';
 import { HomeComponent } from './home/home.component';
+import { ModelSignalsContainerComponent } from './model-signals-container/model-signals-container.component';
 
 export const routes: Routes = [
   {
@@ -14,7 +15,11 @@ export const routes: Routes = [
   },
   {
     path: 'signalInputs',
-    component: SignalsContainerComponent
+    component: SignalInputsContainerComponent
+  },
+  {
+    path: 'modelSignals',
+    component: ModelSignalsContainerComponent
   },
   {
     path: '**',

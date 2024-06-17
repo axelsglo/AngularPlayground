@@ -1,0 +1,10 @@
+<div>
+
+  <p>Flag value in child component: {{ flag() }}</p>
+
+  @if (flag()) {
+  <p>Flag is turned on!</p>
+  }
+
+  <button class="btn btn-primary" (click)="flag.set(!flag())">Signal flag button</button>
+</div>
