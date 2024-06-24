@@ -1,0 +1,10 @@
+<kendo-grid [data]="data" [loading]="loading" [pageable]="true" [pageSize]="state.take" [skip]="state.skip"
+  [sortable]="true" [sort]="state.sort" [groupable]="true" [group]="state.group" [filterable]="true"
+  [filter]="state.filter" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="customerID" [width]="130"></kendo-grid-column>
+  <kendo-grid-column field="contactName" [width]="200"></kendo-grid-column>
+  <kendo-grid-column field="address"></kendo-grid-column>
+  <kendo-grid-column field="companyName" [sortable]="false">
+  </kendo-grid-column>
+  <kendo-grid-column field="city" [sortable]="false"> </kendo-grid-column>
+</kendo-grid>
